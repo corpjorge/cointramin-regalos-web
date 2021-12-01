@@ -17,13 +17,14 @@ class AsociadoController extends Controller
         return Asociado::where('cedula', $request->cedula)->get();
     }
 
-    public function asociado(Asociado $asociado)
+    public function asociado($asociado)
     {
-        return $asociado;
+        return Asociado::find($asociado);
     }
 
-    public function entregar(Asociado $asociado, Request $request)
+    public function entregar(Request $request, $asociado)
     {
+        $asociado = Asociado::find($asociado);
         $asociado->fecha_entrega = \Carbon\Carbon::now();
         $asociado->observaciones = $request->observaciones;
         $asociado->save();

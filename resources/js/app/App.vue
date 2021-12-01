@@ -11,6 +11,9 @@
             <div class="col-lg-6 mb-4">
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
+                        <div v-if="show" class="alert alert-success" role="alert">
+                            Guardado correctamente
+                        </div>
                         <h6 class="m-0 font-weight-bold text-primary">Buscar asociados</h6>
                     </div>
                     <div class="card-body">
@@ -55,8 +58,9 @@
                     </div>
                     <div class="card-body">
                         <div class="mb-3">
-                            <h6>{{ asociado.nombre }}</h6>
-                            <label for="exampleFormControlTextarea1" class="form-label">Observación:</label>
+                            <h6><b>Nombre: </b>{{ asociado.nombre }}</h6>
+                            <h6><b>Fecha de entrega: </b>{{ asociado.fecha_entrega }}</h6>
+                            <label for="exampleFormControlTextarea1" class="form-label"><b>Observación:</b></label>
                             <textarea v-if="!asociado.fecha_entrega" class="form-control" id="exampleFormControlTextarea1" rows="3"
                                       v-model="observaciones"></textarea>
                             <p v-else> {{asociado.observaciones}}</p>
@@ -65,10 +69,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div v-if="show" class="alert alert-success" role="alert">
-            Guardado correctamente
         </div>
 
 
