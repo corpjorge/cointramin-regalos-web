@@ -29,7 +29,6 @@
         "@vue/compiler-sfc": "^3.2.23",
         "axios": "^0.21.4",
         "core-js": "^3.19.2",
-        "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
         "postcss": "^8.1.14",
         "register-service-worker": "^1.7.2",
@@ -37,6 +36,8 @@
         "sass": "^1.44.0",
         "sass-loader": "^12.1.0",
         "vue": "^3.2.23",
-        "vue-loader": "^16.8.3"
+        "vue-loader": "^16.8.3",
+        "vue-router": "^4.0.11",
+        "vuex": "^4.0.2"
     }
 }
