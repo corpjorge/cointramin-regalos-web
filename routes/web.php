@@ -13,6 +13,7 @@ $router->group(['middleware' => 'auth'], function () use ($router) {
     $router->post('/buscar', 'AsociadoController@buscar');
     $router->get('/asociado/{asociado}', 'AsociadoController@asociado');
     $router->post('/entregar/{asociado}', 'AsociadoController@entregar');
+    $router->post('/asociado', 'AsociadoController@store');
     $router->delete('/asociado/{user}', 'AsociadoController@destroy');
     $router->post('/asociados/import/', 'AsociadoController@import');
 

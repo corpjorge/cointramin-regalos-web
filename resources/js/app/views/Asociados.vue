@@ -16,6 +16,35 @@
             <div class="col-lg-4 mb-4">
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
+                        Crear asociado
+                    </div>
+                    <div class="card-body">
+                        <form @submit.prevent="crearAsociado">
+                            <div class="mb-3">
+                                <label for="mail" class="form-label">Cedula</label>
+                                <input type="number" class="form-control" id="mail"
+                                       aria-describedby="emailHelp" v-model="asociadoNuevo.cedula">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="nameCreate" class="form-label">Nombre</label>
+                                <input type="text" class="form-control" id="nameCreate"
+                                       v-model="asociadoNuevo.nombre">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="pass" class="form-label">Oficina</label>
+                                <input type="text" class="form-control" id="pass"
+                                       v-model="asociadoNuevo.oficina">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Crear</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mb-4">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
                         Subir asociados
                     </div>
                     <div class="card-body">
@@ -103,7 +132,8 @@ export default {
             asociado: null,
             cedula: null,
             show: false,
-            error: false
+            error: false,
+            asociadoNuevo: {}
         }
     },
     methods: {
@@ -138,9 +168,18 @@ export default {
             httpClient.get('/asociado/' + id).then(response => this.asociado = response.data)
         },
         eliminar(id) {
-            httpClient.delete('/asociado/'+ id).then(() => {
+            httpClient.delete('/asociado/' + id).then(() => {
                 this.asociado = null
                 this.asociados = null;
+                this.show = true
+                setTimeout(() => {
+                    this.show = false;
+                }, 6000);
+            })
+        },
+        crearAsociado(){
+            httpClient.post('/asociado', this.asociadoNuevo).then(() => {
+                this.asociadoNuevo = {}
                 this.show = true
                 setTimeout(() => {
                     this.show = false;

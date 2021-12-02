@@ -33,6 +33,11 @@ class AsociadoController extends Controller
         $asociado->save();
     }
 
+    public function store(Request $request)
+    {
+        Asociado::create($request->all());
+    }
+
     public function destroy($user)
     {
         Asociado::find($user)->delete();

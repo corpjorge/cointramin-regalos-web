@@ -108,7 +108,7 @@
                                 <input type="password" class="form-control" id="pass"
                                        v-model="userNew.password">
                             </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary">Crear</button>
                         </form>
                     </div>
                 </div>

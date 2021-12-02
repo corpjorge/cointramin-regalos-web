@@ -41,7 +41,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       this.formCreate = false;
-      this.userNew = null;
+      this.userNew = {};
       _plugins_AxiosGlobal__WEBPACK_IMPORTED_MODULE_0__["default"].get('/users/' + id + '/edit').then(function (response) {
         _this2.user = response.data;
       })["catch"](function () {
@@ -61,7 +61,7 @@ __webpack_require__.r(__webpack_exports__);
       _plugins_AxiosGlobal__WEBPACK_IMPORTED_MODULE_0__["default"].post('/users', this.userNew).then(function () {
         _this3.show = true;
         _this3.user = null;
-        _this3.userNew = null;
+        _this3.userNew = {};
         _this3.formCreate = false;
 
         _this3.getUsers();
@@ -82,7 +82,7 @@ __webpack_require__.r(__webpack_exports__);
       _plugins_AxiosGlobal__WEBPACK_IMPORTED_MODULE_0__["default"].put('/users/' + this.user.id, this.user).then(function () {
         _this4.show = true;
         _this4.user = null;
-        _this4.userNew = null;
+        _this4.userNew = {};
 
         _this4.getUsers();
 
@@ -311,7 +311,7 @@ var _hoisted_44 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 var _hoisted_45 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
   type: "submit",
   "class": "btn btn-primary"
-}, "Submit", -1
+}, "Crear", -1
 /* HOISTED */
 );
 
