@@ -6,15 +6,26 @@ const routes = [
         path: '/',
         name: 'Login',
         component: () => import('../views/Login.vue'),
-        meta: { requiresAuth: false, type: 5 }
+        meta: { requiresAuth: false, type: 3 }
     },
     {
         path: '/inicio',
         name: 'Inicio',
         component: () => import('../views/inicio.vue'),
-        meta: { requiresAuth: true, type: 5 }
+        meta: { requiresAuth: true, type: 2 }
     },
-
+    {
+        path: '/asociados',
+        name: 'Asociados',
+        component: () => import('../views/Asociados.vue'),
+        meta: { requiresAuth: true, type: 1 }
+    },
+    {
+        path: '/administradores',
+        name: 'Administradores',
+        component: () => import('../views/Administradores.vue'),
+        meta: { requiresAuth: true, type: 1 }
+    },
 ]
 
 const router = createRouter({

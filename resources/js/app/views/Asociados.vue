@@ -1,19 +1,37 @@
 <template>
-
     <div class="container-fluid">
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Inicio </h1>
-            <a href="/asociados/export" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="color: whitesmoke">
-                <i class="fas fa-download fa-sm text-white-50"></i> Generar reporte </a>
+        </div>
+
+        <div v-if="show" class="alert alert-success" role="alert">
+            Guardado correctamente
+        </div>
+
+        <div v-if="error" class="alert alert-success" role="alert">
+            Ha ocurrido un error
+        </div>
+
+        <div class="row">
+            <div class="col-lg-4 mb-4">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        Subir asociados
+                    </div>
+                    <div class="card-body">
+                        <input type="file" id="file" class="form-control" ref="file" @change="handleFileUpload($event)">
+                        <button @click="uploadAsociados" class="btn btn-sm btn-primary my-2" style="color: whitesmoke">
+                            <i class="fas fa-up text-white-50"></i> Subir
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="row">
             <div class="col-lg-6 mb-4">
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <div v-if="show" class="alert alert-success" role="alert">
-                            Guardado correctamente
-                        </div>
                         <h6 class="m-0 font-weight-bold text-primary">Buscar asociados</h6>
                     </div>
                     <div class="card-body">
@@ -54,17 +72,16 @@
             <div class="col-lg-6 mb-4">
                 <div v-if="asociado" class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Entregar regalo</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">Usuario</h6>
                     </div>
                     <div class="card-body">
                         <div class="mb-3">
                             <h6><b>Nombre: </b>{{ asociado.nombre }}</h6>
-                            <h6><b>Fecha de entrega: </b>{{ asociado.fecha_entrega }}</h6>
-                            <label for="exampleFormControlTextarea1" class="form-label"><b>Observación:</b></label>
-                            <textarea v-if="!asociado.fecha_entrega" class="form-control" id="exampleFormControlTextarea1" rows="3"
-                                      v-model="observaciones"></textarea>
-                            <p v-else> {{asociado.observaciones}}</p>
-                            <button v-if="!asociado.fecha_entrega" class="btn btn-primary my-2" @click="entregar(asociado.id)">Entregar</button>
+                            <h6><b>Cedula: </b>{{ asociado.cedula }}</h6>
+                            <h6><b>Oficina: </b>{{ asociado.oficina }}</h6>
+                            <button class="btn btn-primary my-2"
+                                    @click="eliminar(asociado.id)">Eliminar
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -72,24 +89,44 @@
         </div>
     </div>
 
-
 </template>
 
 <script>
 import httpClient from "../plugins/AxiosGlobal";
 
 export default {
-    name: 'Inicio',
+    name: "Asociados",
     data() {
         return {
+            file: null,
             asociados: null,
             asociado: null,
             cedula: null,
-            observacion: null,
-            show: false
+            show: false,
+            error: false
         }
     },
     methods: {
+        handleFileUpload() {
+            this.file = this.$refs.file.files[0];
+        },
+        uploadAsociados() {
+            let formData = new FormData();
+            formData.append('file', this.file);
+            httpClient.post('/asociados/import', formData, {headers: {'Content-Type': 'multipart/form-data'}})
+                .then(() => {
+                    this.show = true
+                    setTimeout(() => {
+                        this.show = false;
+                    }, 6000);
+                })
+                .catch(() => {
+                    setTimeout(() => {
+                        this.error = true;
+                    }, 6000);
+                });
+
+        },
         buscarAsociado() {
             httpClient.post('/buscar', {cedula: this.cedula}).then(response => {
                 this.asociado = null;
@@ -99,15 +136,20 @@ export default {
         verAsociado(id) {
             httpClient.get('/asociado/' + id).then(response => this.asociado = response.data)
         },
-        entregar(id) {
-            httpClient.post('/entregar/' + id, {observaciones: this.observaciones}).then(() => {
-                this.asociado = null;
-                this.show = true;
+        eliminar(id) {
+            httpClient.delete('/asociado/'+ id).then(() => {
+                this.asociado = null
+                this.asociados = null;
+                this.show = true
                 setTimeout(() => {
                     this.show = false;
                 }, 6000);
-            });
+            })
         }
     }
 }
 </script>
+
+<style scoped>
+
+</style>

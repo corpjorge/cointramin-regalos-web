@@ -81,7 +81,7 @@ var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", {
   "class": "h3 mb-0 text-gray-800"
 }, "Inicio "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  href: "#",
+  href: "/asociados/export",
   "class": "d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm",
   style: {
     "color": "whitesmoke"

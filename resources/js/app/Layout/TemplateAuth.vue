@@ -12,30 +12,36 @@
             </a>
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
-                <a class="nav-link" href="{{ url('/')  }}">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Inicio</span></a>
-            </li>
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-                   aria-expanded="false" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Configuración</span>
-                </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-                     data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Utilities:</h6>
-                        <a class="collapse-item" href="utilities-color.html">Colors</a>
-                        <a class="collapse-item" href="utilities-border.html">Borders</a>
-                        <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                        <a class="collapse-item" href="utilities-other.html">Other</a>
-                    </div>
-                </div>
+                <router-link :to="{name: 'Inicio'}" class="nav-link collapsed" href="#" data-toggle="collapse"
+                             data-target="#collapseUtilities"
+                             aria-expanded="false" aria-controls="collapseUtilities">
+                    <i class="fas fa-home"></i>
+                    <span>Inicio</span>
+                </router-link>
             </li>
+
+            <template v-if="$store.state.Auth.user.type >= 1">
+                <li class="nav-item">
+                    <router-link :to="{name: 'Asociados'}" class="nav-link collapsed" href="#" data-toggle="collapse"
+                                 data-target="#collapseUtilities"
+                                 aria-expanded="false" aria-controls="collapseUtilities">
+                        <i class="fas fa-user"></i>
+                        <span>Asociados</span>
+                    </router-link>
+                </li>
+
+                <li class="nav-item">
+                    <router-link :to="{name: 'Administradores'}" class="nav-link collapsed" href="#"
+                                 data-toggle="collapse" data-target="#collapseUtilities"
+                                 aria-expanded="false" aria-controls="collapseUtilities">
+                        <i class="fas fa-users"></i>
+                        <span>Administradores</span>
+                    </router-link>
+                </li>
+            </template>
+
         </ul>
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
@@ -57,7 +63,7 @@
                     </ul>
                 </nav>
                 <!-- End of Topbar -->
-                <router-view />
+                <router-view/>
             </div>
             <!-- Footer -->
             <footer class="sticky-footer bg-white">
@@ -97,12 +103,11 @@
 </template>
 
 <script>
-// import Inicio from "../views/Inicio";
 import Logout from "./Logout";
+
 export default {
     name: "TemplateAuth",
     components: {Logout},
-    // components: {Inicio}
 }
 </script>
 
