@@ -11,8 +11,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _plugins_AxiosGlobal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../plugins/AxiosGlobal */ "./resources/js/app/plugins/AxiosGlobal.js");
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'Inicio',
@@ -29,7 +28,7 @@ __webpack_require__.r(__webpack_exports__);
     buscarAsociado: function buscarAsociado() {
       var _this = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_0___default().post('/buscar', {
+      _plugins_AxiosGlobal__WEBPACK_IMPORTED_MODULE_0__["default"].post('/buscar', {
         cedula: this.cedula
       }).then(function (response) {
         _this.asociado = null;
@@ -39,14 +38,14 @@ __webpack_require__.r(__webpack_exports__);
     verAsociado: function verAsociado(id) {
       var _this2 = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_0___default().get('/asociado/' + id).then(function (response) {
+      _plugins_AxiosGlobal__WEBPACK_IMPORTED_MODULE_0__["default"].get('/asociado/' + id).then(function (response) {
         return _this2.asociado = response.data;
       });
     },
     entregar: function entregar(id) {
       var _this3 = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_0___default().post('/entregar/' + id, {
+      _plugins_AxiosGlobal__WEBPACK_IMPORTED_MODULE_0__["default"].post('/entregar/' + id, {
         observaciones: this.observaciones
       }).then(function () {
         _this3.asociado = null;

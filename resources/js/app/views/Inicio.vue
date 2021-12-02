@@ -78,7 +78,7 @@
 </template>
 
 <script>
-import axios from "axios";
+import httpClient from "../plugins/AxiosGlobal";
 
 export default {
     name: 'Inicio',
@@ -93,16 +93,16 @@ export default {
     },
     methods: {
         buscarAsociado() {
-            axios.post('/buscar', {cedula: this.cedula}).then(response => {
+            httpClient.post('/buscar', {cedula: this.cedula}).then(response => {
                 this.asociado = null;
                 this.asociados = response.data;
             })
         },
         verAsociado(id) {
-            axios.get('/asociado/' + id).then(response => this.asociado = response.data)
+            httpClient.get('/asociado/' + id).then(response => this.asociado = response.data)
         },
         entregar(id) {
-            axios.post('/entregar/' + id, {observaciones: this.observaciones}).then(() => {
+            httpClient.post('/entregar/' + id, {observaciones: this.observaciones}).then(() => {
                 this.asociado = null;
                 this.show = true;
                 setTimeout(() => {
