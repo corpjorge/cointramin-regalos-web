@@ -44,9 +44,11 @@ class UsersController extends Controller
 
     public function update(Request $request, $user)
     {
-        User::find($user);
+        $user = User::find($user);
         $user->fill($request->all());
-        $user->password = Hash::make($request->password);
+        if ($request->password) {
+            $user->password = Hash::make($request->password);
+        }
         $user->save();
     }
 

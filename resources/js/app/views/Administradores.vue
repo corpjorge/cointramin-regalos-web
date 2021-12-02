@@ -93,19 +93,19 @@
                     <div class="card-body">
                         <form @submit.prevent="fromCreate">
                             <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1"
+                                <label for="mail" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="mail"
                                        aria-describedby="emailHelp" v-model="userNew.email">
                             </div>
                             <div class="mb-3">
-                                <label for="exampleInputPassword1" class="form-label">Nombre</label>
-                                <input type="text" class="form-control" id="exampleInputPassword1"
+                                <label for="nameCreate" class="form-label">Nombre</label>
+                                <input type="text" class="form-control" id="nameCreate"
                                        v-model="userNew.name">
                             </div>
 
                             <div class="mb-3">
-                                <label for="exampleInputPassword1" class="form-label">Contraseña</label>
-                                <input type="password" class="form-control" id="exampleInputPassword1"
+                                <label for="pass" class="form-label">Contraseña</label>
+                                <input type="password" class="form-control" id="pass"
                                        v-model="userNew.password">
                             </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
@@ -144,6 +144,7 @@ export default {
         },
         editUser(id) {
             this.formCreate = false;
+            this.userNew = {};
             httpClient.get('/users/' + id + '/edit').then(response => {
                 this.user = response.data;
             })
@@ -162,7 +163,7 @@ export default {
             httpClient.post('/users', this.userNew).then(() => {
                 this.show = true
                 this.user = null;
-                this.userNew = null;
+                this.userNew = {};
                 this.formCreate = false;
                 this.getUsers();
                 setTimeout(() => {
@@ -180,7 +181,7 @@ export default {
             httpClient.put('/users/' + this.user.id, this.user).then(() => {
                 this.show = true
                 this.user = null;
-                this.userNew = null;
+                this.userNew = {};
                 this.getUsers();
                 setTimeout(() => {
                     this.show = false;

@@ -41,6 +41,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       this.formCreate = false;
+      this.userNew = null;
       _plugins_AxiosGlobal__WEBPACK_IMPORTED_MODULE_0__["default"].get('/users/' + id + '/edit').then(function (response) {
         _this2.user = response.data;
       })["catch"](function () {
@@ -279,7 +280,7 @@ var _hoisted_39 = {
 };
 
 var _hoisted_40 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "for": "exampleInputEmail1",
+  "for": "mail",
   "class": "form-label"
 }, "Email", -1
 /* HOISTED */
@@ -290,7 +291,7 @@ var _hoisted_41 = {
 };
 
 var _hoisted_42 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "for": "exampleInputPassword1",
+  "for": "nameCreate",
   "class": "form-label"
 }, "Nombre", -1
 /* HOISTED */
@@ -301,7 +302,7 @@ var _hoisted_43 = {
 };
 
 var _hoisted_44 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "for": "exampleInputPassword1",
+  "for": "pass",
   "class": "form-label"
 }, "Contraseña", -1
 /* HOISTED */
@@ -398,7 +399,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_39, [_hoisted_40, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "email",
     "class": "form-control",
-    id: "exampleInputEmail1",
+    id: "mail",
     "aria-describedby": "emailHelp",
     "onUpdate:modelValue": _cache[7] || (_cache[7] = function ($event) {
       return $data.userNew.email = $event;
@@ -408,7 +409,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.userNew.email]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_41, [_hoisted_42, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "text",
     "class": "form-control",
-    id: "exampleInputPassword1",
+    id: "nameCreate",
     "onUpdate:modelValue": _cache[8] || (_cache[8] = function ($event) {
       return $data.userNew.name = $event;
     })
@@ -417,7 +418,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.userNew.name]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_43, [_hoisted_44, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "password",
     "class": "form-control",
-    id: "exampleInputPassword1",
+    id: "pass",
     "onUpdate:modelValue": _cache[9] || (_cache[9] = function ($event) {
       return $data.userNew.password = $event;
     })
