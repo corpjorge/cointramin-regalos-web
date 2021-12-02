@@ -44,8 +44,9 @@ __webpack_require__.r(__webpack_exports__);
           _this.show = false;
         }, 6000);
       })["catch"](function () {
+        _this.error = false;
         setTimeout(function () {
-          _this.error = true;
+          _this.error = false;
         }, 6000);
       });
     },
@@ -114,7 +115,7 @@ var _hoisted_3 = {
 };
 var _hoisted_4 = {
   key: 1,
-  "class": "alert alert-success",
+  "class": "alert alert-danger",
   role: "alert"
 };
 var _hoisted_5 = {

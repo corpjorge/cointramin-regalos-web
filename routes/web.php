@@ -17,11 +17,11 @@ $router->group(['middleware' => 'auth'], function () use ($router) {
     $router->post('/asociados/import/', 'AsociadoController@import');
 
     //Users
-//    $router->get('/config-search/users/{user?}', 'UserController@usersFind');
-//    $router->get('/users', 'UserController@index');
-//    $router->post('/users', 'UserController@store');
-//    $router->get('/users/{users}/edit', 'UserController@edit');
-//    $router->put('/users/{users}', 'UserController@update');
+    $router->get('/config-search/users/{user?}', 'UsersController@usersFind');
+    $router->get('/users', 'UsersController@index');
+    $router->post('/users', 'UsersController@store');
+    $router->get('/users/{user}/edit', 'UsersController@edit');
+    $router->put('/users/{user}', 'UsersController@update');
 
 
 });

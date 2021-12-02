@@ -22,7 +22,7 @@
                 </router-link>
             </li>
 
-            <template v-if="$store.state.Auth.user.type >= 1">
+            <template v-if="$store.state.Auth.user.type <= 1">
                 <li class="nav-item">
                     <router-link :to="{name: 'Asociados'}" class="nav-link collapsed" href="#" data-toggle="collapse"
                                  data-target="#collapseUtilities"

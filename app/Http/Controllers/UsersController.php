@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller
 {
@@ -11,7 +12,7 @@ class UsersController extends Controller
     {
         if (strlen($user) >= 4) {
             return \DB::table('users')
-                ->where('role_id', '=', 4)
+                ->where('rol', '=', 3)
                 ->where(function ($query) use ($user) {
                     $query->orWhere('name', 'like', "%$user%")
                         ->orWhere('email', 'like', "%$user%")
@@ -22,30 +23,31 @@ class UsersController extends Controller
         }
     }
 
-    public function index(User $user): mixed
+    public function index(): mixed
     {
-        return $user->where('role_id', 4)->limit(10)->latest('updated_at')->get(['id', 'name', 'email']);
+        return User::where('rol', 2)->limit(10)->latest('updated_at')->get(['id', 'name', 'email']);
     }
 
-    public function store(UserRequest $request, User $user)
+    public function store(Request $request)
     {
+        $user = new User();
         $user->fill($request->all());
-        $user->role_id = 4;
-        $user->password = Hash::make(rand());
+        $user->rol = 2;
+        $user->password = Hash::make($request->password);
         $user->save();
     }
 
-    public function edit(User $user)
+    public function edit($user)
     {
-        if ($user->role_id == 4) {
-            return $user;
-        }
+        return User::find($user);
     }
 
-    public function update(UserRequest $request, User $user)
+    public function update(Request $request, $user)
     {
-        if ($user->role_id == 4)
-            $user->update($request->all());
+        User::find($user);
+        $user->fill($request->all());
+        $user->password = Hash::make($request->password);
+        $user->save();
     }
 
     public function destroy(User $user)

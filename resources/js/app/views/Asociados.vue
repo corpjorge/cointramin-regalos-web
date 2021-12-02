@@ -8,7 +8,7 @@
             Guardado correctamente
         </div>
 
-        <div v-if="error" class="alert alert-success" role="alert">
+        <div v-if="error" class="alert alert-danger" role="alert">
             Ha ocurrido un error
         </div>
 
@@ -121,8 +121,9 @@ export default {
                     }, 6000);
                 })
                 .catch(() => {
+                    this.error = false;
                     setTimeout(() => {
-                        this.error = true;
+                        this.error = false;
                     }, 6000);
                 });
 
