@@ -54,6 +54,8 @@
                             <i class="fas fa-up text-white-50"></i> Subir
                         </button>
                     </div>
+                    <hr>
+                    <a href="/ejemplo.xlsx" class="m-2">Clic aqui para descargar ejemplo de archivo de cargue</a>
                 </div>
             </div>
 
