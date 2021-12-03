@@ -56,6 +56,43 @@
                     </div>
                 </div>
             </div>
+
+            <div class="col-lg-4 mb-4">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        Descargar o eliminar
+                    </div>
+                    <div class="card-body">
+                        <a href="/asociados/export" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+                           style="color: whitesmoke">
+                            <i class="fas fa-download fa-sm text-white-50"></i> Generar reporte
+                        </a>
+                        <hr>
+                        <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            Vaciar base de datos
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Vaciar base de datos</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        ¿Esta seguro que desea vaciar la base de datos?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" @click="deleteBD">Vaciar BD</button>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="row">
@@ -175,12 +212,25 @@ export default {
                 }, 6000);
             })
         },
-        crearAsociado(){
+        crearAsociado() {
             httpClient.post('/asociado', this.asociadoNuevo).then(() => {
                 this.asociadoNuevo = {}
                 this.show = true
                 setTimeout(() => {
                     this.show = false;
+                }, 6000);
+            })
+        },
+        deleteBD() {
+            httpClient.delete('bd/delete').then(() => {
+                this.show = true
+                setTimeout(() => {
+                    this.show = false;
+                }, 6000);
+            }).catch(() => {
+                this.error = true;
+                setTimeout(() => {
+                    this.error = false;
                 }, 6000);
             })
         }

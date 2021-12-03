@@ -1,14 +1,6 @@
 <template>
 
     <div class="container-fluid">
-<!--        <template v-if="$store.state.Auth.user.type <= 1">-->
-<!--            <div class="d-sm-flex align-items-center justify-content-between mb-4">-->
-<!--                <h1 class="h3 mb-0 text-gray-800">Inicio </h1>-->
-<!--                <a href="/asociados/export" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"-->
-<!--                   style="color: whitesmoke">-->
-<!--                    <i class="fas fa-download fa-sm text-white-50"></i> Generar reporte </a>-->
-<!--            </div>-->
-<!--        </template>-->
         <div class="row">
             <div class="col-lg-6 mb-4">
                 <div class="card shadow mb-4">

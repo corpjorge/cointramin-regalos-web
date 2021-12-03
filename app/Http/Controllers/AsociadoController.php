@@ -53,4 +53,9 @@ class AsociadoController extends Controller
     {
         Excel::import(new AsociadosImport, request()->file('file'));
     }
+
+    public function deleteBD()
+    {
+        \DB::table('asociados')->truncate();
+    }
 }

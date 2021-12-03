@@ -24,6 +24,8 @@ $router->group(['middleware' => 'auth'], function () use ($router) {
     $router->get('/users/{user}/edit', 'UsersController@edit');
     $router->put('/users/{user}', 'UsersController@update');
 
+    $router->delete('/bd/delete', 'AsociadoController@deleteBD');
+
 
 });
 
