@@ -33,10 +33,11 @@
                             </div>
 
                             <div class="mb-3">
-                                <label for="pass" class="form-label">Oficina</label>
-                                <input type="text" class="form-control" id="pass"
-                                       v-model="asociadoNuevo.oficina">
+                                <label for="tipo" class="form-label">Tipo de regalo</label>
+                                <input type="text" class="form-control" id="tipo"
+                                       v-model="asociadoNuevo.tipo">
                             </div>
+
                             <button type="submit" class="btn btn-primary">Crear</button>
                         </form>
                     </div>
@@ -77,7 +78,6 @@
                                 <th scope="col">#</th>
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Cedula</th>
-                                <th scope="col">Oficina</th>
                                 <th scope="col">Tipo</th>
                             </tr>
                             </thead>
@@ -86,7 +86,6 @@
                                 <th scope="row">{{ asociado.id }}</th>
                                 <td>{{ asociado.nombre }}</td>
                                 <td>{{ asociado.cedula }}</td>
-                                <td>{{ asociado.oficina }}</td>
                                 <td>{{ asociado.tipo }}</td>
                                 <td>
                                     <button class="btn btn-sm btn-info my-2" @click="verAsociado(asociado.id)">ver
@@ -107,7 +106,6 @@
                         <div class="mb-3">
                             <h6><b>Nombre: </b>{{ asociado.nombre }}</h6>
                             <h6><b>Cedula: </b>{{ asociado.cedula }}</h6>
-                            <h6><b>Oficina: </b>{{ asociado.oficina }}</h6>
                             <button class="btn btn-primary my-2"
                                     @click="eliminar(asociado.id)">Eliminar
                             </button>

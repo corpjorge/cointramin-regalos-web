@@ -29,6 +29,7 @@ class AsociadoController extends Controller
     {
         $asociado = Asociado::find($asociado);
         $asociado->fecha_entrega = \Carbon\Carbon::now();
+        $asociado->oficina = auth()->user()->oficina;
         $asociado->observaciones = $request->observaciones;
         $asociado->save();
     }

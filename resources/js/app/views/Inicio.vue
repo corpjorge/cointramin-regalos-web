@@ -1,12 +1,14 @@
 <template>
 
     <div class="container-fluid">
-        <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Inicio </h1>
-            <a href="/asociados/export" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" style="color: whitesmoke">
-                <i class="fas fa-download fa-sm text-white-50"></i> Generar reporte </a>
-        </div>
-
+<!--        <template v-if="$store.state.Auth.user.type <= 1">-->
+<!--            <div class="d-sm-flex align-items-center justify-content-between mb-4">-->
+<!--                <h1 class="h3 mb-0 text-gray-800">Inicio </h1>-->
+<!--                <a href="/asociados/export" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"-->
+<!--                   style="color: whitesmoke">-->
+<!--                    <i class="fas fa-download fa-sm text-white-50"></i> Generar reporte </a>-->
+<!--            </div>-->
+<!--        </template>-->
         <div class="row">
             <div class="col-lg-6 mb-4">
                 <div class="card shadow mb-4">
@@ -30,7 +32,6 @@
                                 <th scope="col">#</th>
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Cedula</th>
-                                <th scope="col">Oficina</th>
                                 <th scope="col">Tipo</th>
                             </tr>
                             </thead>
@@ -39,7 +40,6 @@
                                 <th scope="row">{{ asociado.id }}</th>
                                 <td>{{ asociado.nombre }}</td>
                                 <td>{{ asociado.cedula }}</td>
-                                <td>{{ asociado.oficina }}</td>
                                 <td>{{ asociado.tipo }}</td>
                                 <td>
                                     <button class="btn btn-sm btn-info my-2" @click="verAsociado(asociado.id)">ver
@@ -60,11 +60,15 @@
                         <div class="mb-3">
                             <h6><b>Nombre: </b>{{ asociado.nombre }}</h6>
                             <h6><b>Fecha de entrega: </b>{{ asociado.fecha_entrega }}</h6>
+                            <h6><b>Oficina entrega: </b>{{ asociado.oficina }}</h6>
                             <label for="exampleFormControlTextarea1" class="form-label"><b>Observación:</b></label>
-                            <textarea v-if="!asociado.fecha_entrega" class="form-control" id="exampleFormControlTextarea1" rows="3"
+                            <textarea v-if="!asociado.fecha_entrega" class="form-control"
+                                      id="exampleFormControlTextarea1" rows="3"
                                       v-model="observaciones"></textarea>
-                            <p v-else> {{asociado.observaciones}}</p>
-                            <button v-if="!asociado.fecha_entrega" class="btn btn-primary my-2" @click="entregar(asociado.id)">Entregar</button>
+                            <p v-else> {{ asociado.observaciones }}</p>
+                            <button v-if="!asociado.fecha_entrega" class="btn btn-primary my-2"
+                                    @click="entregar(asociado.id)">Entregar
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -103,6 +107,7 @@ export default {
             httpClient.post('/entregar/' + id, {observaciones: this.observaciones}).then(() => {
                 this.asociado = null;
                 this.show = true;
+                this.observaciones = null;
                 setTimeout(() => {
                     this.show = false;
                 }, 6000);

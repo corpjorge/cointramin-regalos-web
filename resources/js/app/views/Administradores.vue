@@ -71,11 +71,15 @@
                                 <input type="text" class="form-control" id="name" v-model="user.name">
                             </div>
                             <div class="mb-3">
+                                <label for="oficina" class="form-label">Oficina</label>
+                                <input type="text" class="form-control" id="oficina" v-model="user.oficina">
+                            </div>
+                            <div class="mb-3">
                                 <label for="exampleInputPassword1" class="form-label">Contraseña</label>
                                 <input type="password" class="form-control" id="exampleInputPassword1"
                                        v-model="user.password">
                             </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary">Actualizar</button>
                         </form>
                     </div>
                 </div>
@@ -104,10 +108,17 @@
                             </div>
 
                             <div class="mb-3">
+                                <label for="oficinac" class="form-label">Oficina</label>
+                                <input type="text" class="form-control" id="oficinac"
+                                       v-model="userNew.oficina">
+                            </div>
+
+                            <div class="mb-3">
                                 <label for="pass" class="form-label">Contraseña</label>
                                 <input type="password" class="form-control" id="pass"
                                        v-model="userNew.password">
                             </div>
+
                             <button type="submit" class="btn btn-primary">Crear</button>
                         </form>
                     </div>

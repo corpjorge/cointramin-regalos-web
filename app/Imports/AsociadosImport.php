@@ -18,8 +18,7 @@ class AsociadosImport implements ToModel
         return new Asociado([
             'cedula' => $row[0],
             'nombre' => $row[1],
-            'oficina'=> $row[2],
-            'tipo'   => $row[3]
+            'tipo'   => $row[2]
         ]);
     }
 }

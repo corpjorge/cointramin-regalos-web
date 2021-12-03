@@ -9,6 +9,6 @@ class AsociadosExport implements FromCollection
 {
     public function collection()
     {
-        return Asociado::all();
+        return Asociado::all('cedula', 'nombre', 'oficina', 'tipo', 'fecha_entrega', 'observaciones');
     }
 }
