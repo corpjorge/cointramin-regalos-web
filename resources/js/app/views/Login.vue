@@ -12,7 +12,7 @@
                                 <div class="text-center">
                                     <h1 class="h4 text-gray-900 mb-4">Ingresar</h1>
                                 </div>
-                                <form @submit.prevent="login" class="user">
+                                <form @submit.prevent="login" class="user" autocomplete="off">
                                     <div v-if="error" class="alert alert-danger" role="alert">
                                         Error de datos
                                     </div>
@@ -27,7 +27,7 @@
                                                id="exampleInputPassword" placeholder="Contraseña">
                                     </div>
                                     <div class="d-grid gap-2">
-                                        <button class="btn btn-primary" type="submit">Button</button>
+                                        <button class="btn btn-primary" type="submit">Ingresar</button>
                                     </div>
                                     <hr>
                                 </form>

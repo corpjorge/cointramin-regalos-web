@@ -60,7 +60,7 @@
                         <h6 class="m-0 font-weight-bold text-primary">Editar administrador</h6>
                     </div>
                     <div class="card-body">
-                        <form @submit.prevent="updateAdmin">
+                        <form @submit.prevent="updateAdmin" autocomplete="off">
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Email</label>
                                 <input type="email" class="form-control" id="exampleInputEmail1"
@@ -87,7 +87,7 @@
         </div>
     </div>
 
-    <div class="container-fluid" v-if="formCreate">
+    <div class="container-fluid" v-if="formCreate" autocomplete="off">
         <div class="row">
             <div class="col-lg-12 mb-4">
                 <div class="card shadow mb-4">
@@ -95,7 +95,7 @@
                         <h6 class="m-0 font-weight-bold text-primary">Crear administrador</h6>
                     </div>
                     <div class="card-body">
-                        <form @submit.prevent="fromCreate">
+                        <form @submit.prevent="fromCreate" autocomplete="off">
                             <div class="mb-3">
                                 <label for="mail" class="form-label">Email</label>
                                 <input type="email" class="form-control" id="mail"

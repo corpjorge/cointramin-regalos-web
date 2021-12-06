@@ -19,7 +19,7 @@
                         Crear asociado
                     </div>
                     <div class="card-body">
-                        <form @submit.prevent="crearAsociado">
+                        <form @submit.prevent="crearAsociado" autocomplete="off">
                             <div class="mb-3">
                                 <label for="mail" class="form-label">Cedula</label>
                                 <input type="number" class="form-control" id="mail"
