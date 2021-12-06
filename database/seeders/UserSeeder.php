@@ -22,6 +22,7 @@ class UserSeeder extends Seeder
             'email' => 'corpjorge@hotmail.com',
             'password' => Hash::make('admin'),
             'rol' => '1',
+            'oficina' => 'valledupar',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
@@ -32,6 +33,7 @@ class UserSeeder extends Seeder
             'email' => 'cointramin1999@yahoo.es',
             'password' => Hash::make('Clara.2029'),
             'rol' => '1',
+            'oficina' => 'valledupar',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
