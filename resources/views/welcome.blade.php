@@ -19,6 +19,6 @@
 <div id="app"></div>
 <script src="js/vendor/bootstrap/bootstrap.bundle.min.js"></script>
 <script src="js/sb-admin-2.js"></script>
-<script src="js/main.js"></script>
+<script src="js/app/main.js"></script>
 </body>
 </html>
